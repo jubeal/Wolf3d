@@ -1,0 +1,8 @@
+. = zone vide (sol)
+2 = mur
+T = objet ramassable
+O = obstacle
+E = entree
+S = sortie
+P = porte
+B = bouton
