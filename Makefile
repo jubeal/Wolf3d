@@ -6,7 +6,7 @@
 #    By: jubeal <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 10:38:34 by jubeal            #+#    #+#              #
-#    Updated: 2019/03/25 15:43:28 by adjouber         ###   ########.fr        #
+#    Updated: 2019/03/28 15:14:39 by jubeal           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC_NAME =	main.c \
 			cast.c \
 			minimap.c \
 			wolf.c \
-			interface.c
+			interface.c \
+			bresenham.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

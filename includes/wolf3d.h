@@ -6,7 +6,7 @@
 /*   By: jubeal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:00:10 by jubeal            #+#    #+#             */
-/*   Updated: 2019/03/25 15:43:08 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/03/26 14:30:27 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WIN_X 1650
 # define WIN_Y 960
 # define WALLS 0x1BA310
-# define ROOF 0x666666
+# define GROUND 0x666666
 # define SKY 0x0099FF
 # define WALL_MM 0x1BA310
 # define ROOF_MM 0XBBBBBB
@@ -40,6 +40,7 @@ typedef struct		s_map
 	int				yend;
 	char			value;
 	struct s_map	*next;
+	struct s_map	*next_line;
 }					t_map;
 
 typedef struct		s_prc
@@ -74,7 +75,11 @@ typedef struct		s_player
 
 typedef struct		s_mini
 {
+	int				xmax;
+	int				xmin;
 	int				xend;
+	int				ymax;
+	int				ymin;
 	int				yend;
 }					t_mini;
 
@@ -92,16 +97,26 @@ typedef struct		s_wolf
 	t_map			*m;
 }					t_wolf;
 
+typedef struct 		s_points
+{
+	int				x;
+	int				y;
+	int				dst;
+	struct s_points	*next;
+}					t_points;
+
 t_map				*parser(int fd);
 int					close_prog(t_wolf *w);
 int					keyboard(int key, t_wolf *w);
 void				init_wolf(t_wolf **w, t_map *m);
 void				ft_open_windows(t_wolf *w);
-int					*cast(t_prc *p);
+int					cast(t_prc *p);
 void				wolf(t_wolf *w);
-void				minimap(t_wolf *w);
+void				minimap(t_wolf *w, int x, int y);
 int					move(int key, t_wolf *w);
 void				pixel_put_img(int x, int y, t_wolf *current, int color);
 void				interface(t_wolf *w);
+int					expose_hook(t_wolf *w);
+t_points			*bresenham(t_prc *p);
 
 #endif

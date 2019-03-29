@@ -6,7 +6,7 @@
 /*   By: jubeal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 17:58:30 by jubeal            #+#    #+#             */
-/*   Updated: 2019/03/25 14:47:22 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:35:59 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,25 @@ t_player	*init_player(void)
 	if (!(p = (t_player*)malloc(sizeof(t_player))))
 		return (0);
 	p->cam = 50;
-	p->x = 588;
-	p->y = 415;
+	p->x = 150;
+	p->y = 150;
 	p->fov = 70.;
 	p->dov = 45.;
 	return (p);
+}
+
+static void	init_map(t_wolf *w, t_map *m)
+{
+	w->mm.xend = m->xend / 2;
+	w->mm.yend = m->yend / 2;
+	while ((m->next))
+	{
+		m = m->next;
+		if (w->mm.xend < m->xend / 2)
+			w->mm.xend = m->xend / 2;
+		if (w->mm.yend < m->yend / 2)
+			w->mm.yend = m->yend / 2;
+	}
 }
 
 void		init_wolf(t_wolf **w, t_map *m)
@@ -31,6 +45,7 @@ void		init_wolf(t_wolf **w, t_map *m)
 	if (!((*w) = (t_wolf *)malloc(sizeof(t_wolf))))
 		return ;
 	(*w)->m = m;
+	init_map(*w, m);
 	if (!((*w)->p = init_player()))
 		return ;
 }

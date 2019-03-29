@@ -6,7 +6,7 @@
 /*   By: jubeal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:23:53 by jubeal            #+#    #+#             */
-/*   Updated: 2019/03/25 15:42:46 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:30:40 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	mlx(t_wolf *w)
 {
 	ft_open_windows(w);
 	interface(w);
-	minimap(w);
-//	wolf(w);
+	minimap(w, 75, 75);
+	wolf(w);
 	mlx_hook(w->win, 2, 1L << 1, move, w);
 	mlx_key_hook(w->win, keyboard, w);
 	mlx_hook(w->win, 17, 1L << 17, close_prog, w);

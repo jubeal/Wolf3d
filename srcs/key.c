@@ -6,7 +6,7 @@
 /*   By: adjouber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 13:45:13 by adjouber          #+#    #+#             */
-/*   Updated: 2019/03/25 15:32:58 by adjouber         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:30:47 by adjouber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		move(int key, t_wolf *w)
 		w->p->x += 20;
 	else if (key == 0)
 		w->p->x -= 20;
-	minimap(w);
+	minimap(w, 75, 75);
+	wolf(w);
 	return (0);
 }
